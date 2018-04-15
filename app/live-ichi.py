@@ -21,7 +21,7 @@ def parse_args(pargs=None):
     parser.add_argument('--compression', default=int(os.environ['COMPRESSION']),
                         required=False, help='Compression (Time Frame) in minutes')
 
-    parser.add_argument('--exchange', default='poloniex',
+    parser.add_argument('--exchange', default=os.environ['EXCHANGE'],
                         required=False, help='Exchange name')
     return parser.parse_args(pargs)
 
