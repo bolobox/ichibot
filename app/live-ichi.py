@@ -31,7 +31,7 @@ if __name__ == '__main__':
 
     #Settings
     compression =  int(os.environ['COMPRESSION']) # minutes
-    backload = 77*2
+    backload = 77
     market = parsed_args.exchange
 
     exchange = getattr(ccxt, market)()
