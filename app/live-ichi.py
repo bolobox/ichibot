@@ -7,6 +7,7 @@ import backtrader as bt
 from strategies import *
 import sys
 import argparse
+import os
 
 def parse_args(pargs=None):
     parser = argparse.ArgumentParser(
@@ -29,7 +30,7 @@ if __name__ == '__main__':
     parsed_args = parse_args(sys.argv)
 
     #Settings
-    compression =  parsed_args.compression # minutes
+    compression =  int(os.environ['COMPRESSION']) # minutes
     backload = 77*2
     market = parsed_args.exchange
 
@@ -54,17 +55,7 @@ if __name__ == '__main__':
 
             cerebro.adddata(data_ticks, name=market+"_"+symbol)
 
-    """
-    data_ticks_btc = bt.feeds.CCXT(exchange=market, symbol="BTC/USD", name=market+"_BTC/USD",
-       timeframe=bt.TimeFrame.Minutes, fromdate=hist_start_date, compression=compression, config={'rateLimit': 10000, 'enableRateLimit': True})
 
-    cerebro.adddata(data_ticks_btc, name=market+"_BTC/USD")
-
-    data_ticks_eth = bt.feeds.CCXT(exchange=market, symbol="XMR/USD", name=market+"_ETH/USD",
-           timeframe=bt.TimeFrame.Minutes, fromdate=hist_start_date, compression=compression, config={'rateLimit': 10000, 'enableRateLimit': True})
-
-    cerebro.adddata(data_ticks_eth, name=market+"_ETH/USD")
-    """
     cerebro.addstrategy(IchimokuStrategyB)
 
     cerebro.run()
