@@ -19,7 +19,7 @@ class BaseStrategy(bt.Strategy):
         print('%s, %s' % (dt.isoformat(), txt))
 
     def notify_operator(self, msg):
-        TOKEN =  os.environ['TG_TOKEN'] # Ponemos nuestro Token generado con el @BotFather
+        TOKEN =  os.environ['TG_TOKEN'] 
         CHANNEL_ID = int(os.environ['TG_CHANNEL_ID'])
 
         tb = telebot.TeleBot(TOKEN)
