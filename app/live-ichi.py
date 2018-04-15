@@ -43,7 +43,7 @@ if __name__ == '__main__':
 
     count = 0
     for symbol in markets:
-        if symbol.endswith("USDT"):
+        if symbol.endswith("USDT") or symbol.endswith("USD"):
             """
             count = count+1
             if count > 2:
