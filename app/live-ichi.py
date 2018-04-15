@@ -18,7 +18,7 @@ def parse_args(pargs=None):
     )
     parser.add_argument('live-ichi.py')
 
-    parser.add_argument('--compression', default=30,
+    parser.add_argument('--compression', default=int(os.environ['COMPRESSION']),
                         required=False, help='Compression (Time Frame) in minutes')
 
     parser.add_argument('--exchange', default='poloniex',
@@ -30,7 +30,7 @@ if __name__ == '__main__':
     parsed_args = parse_args(sys.argv)
 
     #Settings
-    compression =  int(os.environ['COMPRESSION']) # minutes
+    compression = parsed_args.compression  # minutes
     backload = 77
     market = parsed_args.exchange
 
