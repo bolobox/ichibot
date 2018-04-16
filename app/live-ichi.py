@@ -44,11 +44,6 @@ if __name__ == '__main__':
     count = 0
     for symbol in markets:
         if symbol.endswith("USDT") or symbol.endswith("USD"):
-            """
-            count = count+1
-            if count > 2:
-                continue
-            """
             print("Adding symbol "+symbol)
             data_ticks = bt.feeds.CCXT(exchange=market, symbol=symbol, name=market+"_"+symbol,
                    timeframe=bt.TimeFrame.Minutes, fromdate=hist_start_date, compression=compression, config={'rateLimit': 10000, 'enableRateLimit': True})
