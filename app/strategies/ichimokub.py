@@ -21,7 +21,7 @@ class IchimokuStrategyB(BaseStrategy):
         self.inds = dict()
         for i, d in enumerate(self.datas):
             self.inds[d] = dict()
-            self.inds[d]['ichimoku'] = bt.indicators.Ichimoku(plot=True)
+            self.inds[d]['ichimoku'] = bt.indicators.Ichimoku(d, plot=True)
 
 
     def next(self):
